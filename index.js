@@ -1,33 +1,51 @@
-const grcode = require('qrcode-terminal');
+const qrcode = require('qrcode-terminal');
+const fs = require('fs');
+const path = require('path');
+const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 
-const { Client, LocalAuth } = require('whatsapp-web.js');
-
+// Initialize the client
 const client = new Client({
-
-authStrategy: new LocalAuth(),
-
+    authStrategy: new LocalAuth(),
 });
 
+// Generate QR code for authentication
 client.on('qr', qr => {
-
-grcode.generate(qr, {small: true});
-
+    qrcode.generate(qr, { small: true });
 });
 
+// Notify when the bot is ready
 client.on('ready', () => {
-
-console.log('BOTIS SUCCESSFULLY CONNECTED ✅');
-
+    console.log('BOT IS SUCCESSFULLY CONNECTED ✅');
 });
 
-client.on('message', message => {
+// Load and set up commands from the 'commands' folder
+client.commands = new Map();
+const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
 
-if(message.body === '.ping') {
-
-message.reply('pong ✅');
-
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
 }
 
+// Message handler
+client.on('message', async message => {
+    const args = message.body.trim().split(/ +/);
+    const commandName = args.shift().toLowerCase();
+
+    if (commandName === '.ping') {
+        message.reply('pong ✅');
+    }
+
+    if (!client.commands.has(commandName)) return;
+
+    const command = client.commands.get(commandName);
+    try {
+        await command.execute(client, message);
+    } catch (error) {
+        console.error(error);
+        message.reply('There was an error trying to execute that command!');
+    }
 });
 
+// Initialize the client
 client.initialize();
