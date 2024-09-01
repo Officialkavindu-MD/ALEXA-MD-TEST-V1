@@ -7,9 +7,9 @@ module.exports = {
         const chat = await message.getChat();
 
         // Load an image to send
-        const media = MessageMedia.fromFilePath('path_to_your_image.jpg');
+        const media = MessageMedia.fromFilePath('MEDIA DATA/main_logo.png');
 
         // Send the image with the message
-        client.sendMessage(chat.id._serialized, 'I am alive now', { media });
+        client.sendMessage(chat.id._serialized, '*HI , I AM ALEXA-MD WHATSAPP USER BOT ✅*', { media });
     }
 };
