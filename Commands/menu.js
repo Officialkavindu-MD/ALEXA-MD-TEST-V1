@@ -16,7 +16,7 @@ module.exports = {
         const menuMessage = `${botDescription}${commandsList}*More commands coming soon!*`;
 
         // Load the image to send
-        const media = MessageMedia.fromFilePath('path_to_your_image.jpg');
+        const media = MessageMedia.fromFilePath('MEDIA DATA/main_logo.png');
 
         // Send the image with the menu message as a caption
         client.sendMessage(chat.id._serialized, media, { caption: menuMessage });
