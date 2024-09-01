@@ -1,14 +1,6 @@
+
 <h1 align="center">
-  <span style="font-size:xx-large;">
-    <span style="color: red; animation: colorChange 2s infinite;">A</span>
-    <span style="color: orange; animation: colorChange 2s infinite;">L</span>
-    <span style="color: yellow; animation: colorChange 2s infinite;">E</span>
-    <span style="color: green; animation: colorChange 2s infinite;">X</span>
-    <span style="color: blue; animation: colorChange 2s infinite;">A</span>
-    <span style="color: indigo; animation: colorChange 2s infinite;">-</span>
-    <span style="color: violet; animation: colorChange 2s infinite;">M</span>
-    <span style="color: red; animation: colorChange 2s infinite;">D</span>
-  </span>
+  <span style="font-size:xx-large; animation: colorChange 1s infinite;">ALEXA-MD</span>
 </h1>
 
 <p align="center">
@@ -32,4 +24,3 @@ To deploy ALEXA-MD on your own server or local machine, follow these steps:
    ```bash
    git clone https://github.com/your-username/ALEXA-MD.git
    cd ALEXA-MD
-
