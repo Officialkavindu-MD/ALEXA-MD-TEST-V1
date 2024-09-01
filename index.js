@@ -32,10 +32,6 @@ client.on('message', async message => {
     const args = message.body.trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 
-    if (commandName === '.ping') {
-        message.reply('pong ✅');
-    }
-
     if (!client.commands.has(commandName)) return;
 
     const command = client.commands.get(commandName);
