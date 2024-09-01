@@ -12,7 +12,7 @@
 </h1>
 
 <p align="center">
-  <img src="[https://link-to-your-bot-logo.png](https://telegra.ph/file/632c122535bfcd2ecc76c.png)" alt="ALEXA-MD Logo" width="200">
+  <img src="https://telegra.ph/file/632c122535bfcd2ecc76c.png" alt="ALEXA-MD Logo" width="200">
 </p>
 
 ## About ALEXA-MD
