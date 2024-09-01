@@ -45,3 +45,4 @@ client.on('message', async message => {
 
 // Initialize the client
 client.initialize();
+
