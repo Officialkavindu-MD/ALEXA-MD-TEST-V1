@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 const sharp = require('sharp');
+const { updateChatCount } = require('./plugins/chatCounter'); // Import the chatCounter plugin
 
 // Initialize the client
 const client = new Client({
@@ -30,6 +31,9 @@ for (const file of commandFiles) {
 
 // Message handler
 client.on('message', async message => {
+    // Update chat count for every received message
+    updateChatCount(message);
+
     const args = message.body.trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 
@@ -46,4 +50,3 @@ client.on('message', async message => {
 
 // Initialize the client
 client.initialize();
-
