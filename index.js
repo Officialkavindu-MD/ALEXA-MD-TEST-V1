@@ -2,6 +2,7 @@ const qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const path = require('path');
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
+const sharp = require('sharp');
 
 // Initialize the client
 const client = new Client({
