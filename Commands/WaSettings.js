@@ -3,7 +3,7 @@ const { MessageMedia } = require('whatsapp-web.js');
 module.exports = {
     name: 'WaSettings',
     description: 'Manage group settings like mute, unmute, and set group profile picture.',
-    
+
     commands: {
         '.mute': async (client, message) => {
             const chat = await message.getChat();
@@ -50,13 +50,12 @@ module.exports = {
         }
     },
 
-    execute: async (client, message) => {
+    execute: async function(client, message) { // Use function instead of arrow function to ensure correct context
         const args = message.body.split(' ')[0];
         
         // Check if the command exists in the commands list
         if (this.commands[args]) {
             await this.commands[args](client, message);
-        } 
-        // If command does not exist, do nothing
+        }
     }
 };
