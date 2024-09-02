@@ -1,5 +1,5 @@
-
 const { MessageMedia } = require('whatsapp-web.js');
+const sharp = require('sharp');
 
 module.exports = {
     name: '.sticker',
@@ -8,17 +8,26 @@ module.exports = {
         // Check if the message has an image
         if (message.hasMedia) {
             const media = await message.downloadMedia();
-
-            // Convert the media to a sticker with title and description
-            const sticker = new MessageMedia(
-                media.mimetype,
-                media.data,
-                'ALEXA-MD TEST V1 👨‍💻❤️✅',  // Sticker title
-                { isSticker: true, caption: 'KAVI_OFFICIAL 😌❤️' } // Sticker description
-            );
-
-            // Send the sticker back with a mention to the command sender
-            await message.reply(sticker, message.from, { mentions: [message.author] });
+            
+            // Convert the image to a sticker using sharp
+            sharp(Buffer.from(media.data, 'base64'))
+                .resize(512, 512, { fit: 'inside' })
+                .webp({ lossless: true })
+                .toBuffer()
+                .then((data) => {
+                    const sticker = new MessageMedia('image/webp', data.toString('base64'));
+                    
+                    // Send the sticker back
+                    client.sendMessage(message.from, sticker, {
+                        sendMediaAsSticker: true,
+                        stickerAuthor: 'KAVI_OFFICIAL 😌❤️',
+                        stickerName: 'ALEXA-MD TEST V1 👨‍💻❤️✅'
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    client.sendMessage(message.from, 'Failed to create sticker.');
+                });
         } else {
             message.reply('Please send an image with the command to convert it into a sticker.');
         }
