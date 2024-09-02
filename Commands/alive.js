@@ -1,7 +1,7 @@
 const { MessageMedia } = require('whatsapp-web.js');
 
 module.exports = {
-    name: 'alive',
+    name: '.alive',
     description: 'Responds with "I am alive now" and an image.',
     execute: async (client, message) => {
         const chat = await message.getChat();
