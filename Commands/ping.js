@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'ping',
+    name: '.ping',
     description: 'Ping command to check bot response time.',
     execute: async (client, message) => {
         const start = Date.now();
