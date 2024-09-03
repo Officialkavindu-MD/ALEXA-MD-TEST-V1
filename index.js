@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { Client, LocalAuth, MessageMedia } = require('whatsapp-web.js');
 const sharp = require('sharp');
+const ytdl = require('ytdl-core');
 const { updateChatCount } = require('./plugins/chatCounter'); // Import the chatCounter plugin
 
 // Initialize the client
