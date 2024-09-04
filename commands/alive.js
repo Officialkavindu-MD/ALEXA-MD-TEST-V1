@@ -1,10 +1,10 @@
-const { MessageMedia } = require('whatsapp-web.js');
+const { MessageMedia, Buttons } = require('whatsapp-web.js');
 const fs = require('fs');
 const path = require('path');
 
 module.exports = {
     name: '.alive',
-    description: 'Displays bot status, information, and an image along with a voice message.',
+    description: 'Displays bot status, information, and an image along with a voice message and buttons.',
     execute: async (client, message) => {
         const chat = await message.getChat();
 
@@ -44,10 +44,17 @@ _This bot is a powerful WhatsApp multi-device bot designed to automate your task
 
 _Thank you for using ALEXA-MD!_ ✅`;
 
+        // Create buttons
+        const buttons = new Buttons(aliveMessage, [
+            { body: 'PING', id: '.ping' },
+            { body: 'MENU', id: '.menu' },
+            { body: 'CHANNEL', id: 'https://whatsapp.com/channel/0029Vao2hao0Qeah97zMJZ3w' } // Replace with your WhatsApp channel link
+        ], 'ALEXA-MD Bot');
+
         // Send the voice message first
         await client.sendMessage(chat.id._serialized, voiceMessage, { sendMediaAsVoice: true });
 
-        // Send the image with the message
-        await client.sendMessage(chat.id._serialized, aliveMessage, { media: image });
+        // Send the message with buttons and image
+        await client.sendMessage(chat.id._serialized, buttons, { media: image });
     }
 };
