@@ -29,9 +29,9 @@ module.exports = {
         const aliveMessage = `*🔥 ALEXA-MD BOT STATUS 🔥*
 
 👤 *Owner:* _KAVI_OFFICIAL_  
-📞 *Contact:* [+94704467936](tel:+94704467936)
+📞 *Contact:* +94704467936
 
-*🛠 Bot Version:* _v1.0.0_
+*🛠 Bot Version:*   _v1.0.0_
 *📅 Uptime:* _${uptime}_
 
 *ℹ️ About ALEXA-MD:*
