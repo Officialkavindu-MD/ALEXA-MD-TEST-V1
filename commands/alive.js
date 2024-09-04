@@ -9,12 +9,10 @@ module.exports = {
         const chat = await message.getChat();
 
         // Load the voice message to send
-        const voiceMessagePath = path.join(__dirname, 'MEDIA DATA', 'voice_message.mp3');
-        const voiceMessage = MessageMedia.fromFilePath(voiceMessagePath);
+        const voiceMessage = MessageMedia.fromFilePath('MEDIA DATA/voice_message.mp3');
 
         // Load the image to send
-        const imagePath = path.join(__dirname, 'MEDIA DATA', 'main_logo.png');
-        const image = MessageMedia.fromFilePath(imagePath);
+        const image = MessageMedia.fromFilePath('MEDIA DATA/main_logo.png');
 
         // Calculate uptime
         const totalSeconds = process.uptime();
